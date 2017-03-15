@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import p5 from "p5";
 
 import Ball from './utils/Ball.js';
+import Vector from './utils/vector.js';
 
-export default class Sample extends Component {
+export default class Follower extends Component {
   componentDidMount() {
     new p5(this.sketch);
   }
@@ -36,7 +37,13 @@ export default class Sample extends Component {
     }, true);
 
     const frameRate = 30;
-    let t = 0;
+    const initialBall = {
+      location: new Vector(0,0),
+      velocity: new Vector(0, 0),
+      acceleration: new Vector(0, 0),
+      width: width,
+      height: height
+    };
 
     let b;
 
@@ -47,7 +54,10 @@ export default class Sample extends Component {
 
       canvas.parent(containerId);
 
-      b = new Ball(0, 0, 1, 1, width, height, p);
+      let location = new Vector(0, 0);
+      let velocity = new Vector(0, 0);
+      let acceleration = new Vector(0, 0);
+      b = new Ball(initialBall, p);
     };
 
     p.draw = ()=> {
