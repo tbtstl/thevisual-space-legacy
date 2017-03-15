@@ -18,6 +18,7 @@ export default class ProjectList extends Component {
   projectSelected(name, color, bg) {
     document.body.classList.remove(this.state.bodyColor);
     document.body.classList.remove(this.state.bodyBG);
+    void document.body.offsetWidth; // recalculate to trigger animation
     document.body.classList.add(color);
     document.body.classList.add(bg);
     this.setState({selectedProject: name, bodyColor: color, bodyBG: bg});
