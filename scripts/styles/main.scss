@@ -1,0 +1,11 @@
+body{
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: line-through;
+  }
+}
