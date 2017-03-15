@@ -7,7 +7,11 @@ export default class Ball {
       velocity: new Vector(0, 0),
       acceleration: new Vector(0, 0),
       width: 800,
-      height: 800
+      height: 800,
+      color: 175,
+      stroke: 0,
+      update: this.defaultUpdate,
+      display: this.defaultDisplay
     };
     let attrs = Object.assign({}, defaultAttrs, customAttrs);
     this.location = attrs.location;
@@ -15,15 +19,14 @@ export default class Ball {
     this.acceleration = attrs.acceleration;
     this.canvasWidth = attrs.width;
     this.canvasHeight = attrs.height;
+    this.color = attrs.color;
+    this.stroke = attrs.stroke;
     this.p = p;
+    this.update = attrs.update;
+    this.display = attrs.display;
   }
 
-  update() {
-    let mouse = new Vector(this.p.mouseX, this.p.mouseY);
-    mouse = mouse.subtract(this.location);
-    mouse = mouse.setMag(0.1);
-    this.acceleration = mouse;
-
+  defaultUpdate() {
     this.velocity = this.velocity.add(this.acceleration);
     this.location = this.location.add(this.velocity);
     this.velocity = this.velocity.limit(5);
@@ -37,9 +40,9 @@ export default class Ball {
     }
   }
 
-  display(){
-    this.p.stroke(0);
-    this.p.fill(175);
+  defaultDisplay(){
+    this.p.stroke(this.stroke);
+    this.p.fill(this.color);
     this.p.ellipse(this.location.x, this.location.y, 48, 48);
   }
 }

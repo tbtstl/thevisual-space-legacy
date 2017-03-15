@@ -5,28 +5,55 @@ import Ball from './utils/Ball.js';
 import Vector from './utils/vector.js';
 
 export default class Follower extends Component {
+  constructor(props){
+    super(props);
+  }
+
   componentDidMount() {
     new p5(this.sketch);
   }
 
+
   sketch(p) {
     const containerId = 'canvas-container';
+
     let width = window.innerWidth - 100;
-
-    if (width >= 480){
-      width = window.innerWidth/2;
-    }
-
     let height = window.innerHeight - 100;
     width = Math.min(height, 800);
     height = Math.min(width, 800);
+    let color = '#5E2CA5';
+    let stroke = '#9EEBCF';
+    let location = new Vector(width, 0);
+    let velocity = new Vector(0, 0);
+    let acceleration = new Vector(0, 0);
 
-    window.addEventListener('resize', function(){
-      let newWidth = window.innerWidth - 100;
+    const ballUpdate = () => {
+      let mouse = new Vector(p.mouseX, p.mouseY);
+      mouse = mouse.subtract(location);
+      mouse = mouse.setMag(0.1);
+      acceleration = mouse;
 
-      if (newWidth >= 480){
-        newWidth = window.innerWidth/2;
+      velocity = velocity.add(acceleration);
+      location = location.add(velocity);
+      velocity = velocity.limit(5);
+
+      if ((location.x > width) || (location.x < 0)) {
+        velocity.x = velocity.x * -1;
       }
+
+      if ((location.y > height) || (location.y < 0)) {
+        velocity.y = velocity.y * -1;
+      }
+    };
+
+    const ballDisplay = () => {
+      p.stroke(stroke);
+      p.fill(color);
+      p.ellipse(location.x, location.y, 48, 48);
+    };
+
+    window.addEventListener('resize', function () {
+      let newWidth = window.innerWidth - 100;
       let newHeight = window.innerHeight - 100;
       width = Math.min(newWidth, 800);
       height = Math.min(newHeight, 800);
@@ -38,11 +65,15 @@ export default class Follower extends Component {
 
     const frameRate = 30;
     const initialBall = {
-      location: new Vector(0,0),
-      velocity: new Vector(0, 0),
-      acceleration: new Vector(0, 0),
+      location: location,
+      velocity: velocity,
+      acceleration: acceleration,
       width: width,
-      height: height
+      height: height,
+      color: color,
+      stroke: stroke,
+      update: ballUpdate,
+      display: ballDisplay
     };
 
     let b;
@@ -54,20 +85,17 @@ export default class Follower extends Component {
 
       canvas.parent(containerId);
 
-      let location = new Vector(0, 0);
-      let velocity = new Vector(0, 0);
-      let acceleration = new Vector(0, 0);
       b = new Ball(initialBall, p);
     };
 
     p.draw = ()=> {
-      p.background(255);
-      b.update();
+      p.background(255, 0);
+      b.update(p);
       b.display();
     }
   }
 
   render() {
-    return (<div></div>);
+    return (<div>It's a ball that follows your mouse ¯\_(ツ)_/¯</div>);
   }
 };
