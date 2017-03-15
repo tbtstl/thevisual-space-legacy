@@ -1,6 +1,6 @@
 # The Visual.space
 
-This repository contains the code for [thevisual.space](https;//thevisual.space), a collection of web experiments I've done in my spare time
+This repository contains the code for [thevisual.space](https://thevisual.space), a collection of web experiments I've done in my spare time
 
 ### Usage
 
