@@ -18,8 +18,8 @@ export default class Follower extends Component {
     const containerId = 'canvas-container';
 
     const frameRate = 60;
-    let width = window.innerWidth/2;
-    let height = window.innerHeight/2;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
     let color = '#5E2CA5';
     let stroke = '#9EEBCF';
     let location = new Vector(width, 0);
@@ -52,11 +52,10 @@ export default class Follower extends Component {
     };
 
     window.addEventListener('resize', function () {
-      width = window.innerWidth/2;
-      height = window.innerHeight/2;
+      width = window.innerWidth;
+      height = window.innerHeight;
 
       let canvas = p.createCanvas(width, height);
-      canvas.class('fl w-100 pa2 v-mid');
       canvas.parent(containerId);
     }, true);
 
