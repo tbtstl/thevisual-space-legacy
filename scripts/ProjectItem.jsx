@@ -24,7 +24,6 @@ export default class ProjectList extends Component {
   }
 
   mouseEnter(){
-    console.log('mouse Inside');
     this.setState({mouseInside: true});
   }
 
