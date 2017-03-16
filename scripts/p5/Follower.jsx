@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import p5 from "p5";
-import p5Dom from "p5"
 
 import Ball from './utils/Ball.js';
 import Vector from './utils/vector.js';
@@ -18,6 +17,7 @@ export default class Follower extends Component {
   sketch(p) {
     const containerId = 'canvas-container';
 
+    const frameRate = 60;
     let width = window.innerWidth/2;
     let height = window.innerHeight/2;
     let color = '#5E2CA5';
@@ -60,7 +60,6 @@ export default class Follower extends Component {
       canvas.parent(containerId);
     }, true);
 
-    const frameRate = 30;
     const initialBall = {
       location: location,
       velocity: velocity,
