@@ -9,3 +9,12 @@ a {
     text-decoration: line-through;
   }
 }
+
+
+#canvas-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50vw;
+  height: 50vh;
+}

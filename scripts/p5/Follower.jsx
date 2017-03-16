@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import p5 from "p5";
+import p5Dom from "p5"
 
 import Ball from './utils/Ball.js';
 import Vector from './utils/vector.js';
@@ -17,10 +18,8 @@ export default class Follower extends Component {
   sketch(p) {
     const containerId = 'canvas-container';
 
-    let width = window.innerWidth - 100;
-    let height = window.innerHeight - 100;
-    width = Math.min(height, 800);
-    height = Math.min(width, 800);
+    let width = window.innerWidth/2;
+    let height = window.innerHeight/2;
     let color = '#5E2CA5';
     let stroke = '#9EEBCF';
     let location = new Vector(width, 0);
@@ -53,10 +52,8 @@ export default class Follower extends Component {
     };
 
     window.addEventListener('resize', function () {
-      let newWidth = window.innerWidth - 100;
-      let newHeight = window.innerHeight - 100;
-      width = Math.min(newWidth, 800);
-      height = Math.min(newHeight, 800);
+      width = window.innerWidth/2;
+      height = window.innerHeight/2;
 
       let canvas = p.createCanvas(width, height);
       canvas.class('fl w-100 pa2 v-mid');
@@ -82,7 +79,6 @@ export default class Follower extends Component {
       let canvas = p.createCanvas(width, height);
       p.frameRate(frameRate);
       p.smooth();
-
       canvas.parent(containerId);
 
       b = new Ball(initialBall, p);
