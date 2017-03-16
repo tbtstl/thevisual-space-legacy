@@ -90,6 +90,6 @@ export default class Follower extends Component {
   }
 
   render() {
-    return (<div className="f2 lh-title">It's a ball that follows your mouse ¯\_(ツ)_/¯</div>);
+    return (<div></div>);
   }
 };
