@@ -64,17 +64,15 @@ export default class AttractedBubbles extends Component {
       p.frameRate(frameRate);
       p.smooth();
       canvas.parent(containerId);
-      setTimeout(()=>{
-        for (let i = 0; i < numMovers; i++) {
-          initialMover.mass = Math.floor((Math.random() * 5) + 1);
-          let x = (Math.random() * (window.innerWidth)) + 1;
-          let y = (Math.random() * (window.innerHeight)) + 1;
-          initialMover.location = new Vector(x, y);
-          movers.push(new Mover(initialMover, p));
-        }
+      for (let i = 0; i < numMovers; i++) {
+        initialMover.mass = Math.floor((Math.random() * 5) + 1);
+        let x = (Math.random() * (window.innerWidth)) + 1;
+        let y = (Math.random() * (window.innerHeight)) + 1;
+        initialMover.location = new Vector(x, y);
+        movers.push(new Mover(initialMover, p));
+      }
 
-        attractor = new Attractor(p, attractorAttrs);
-      }, 3000);
+      attractor = new Attractor(p, attractorAttrs);
 
     };
 
