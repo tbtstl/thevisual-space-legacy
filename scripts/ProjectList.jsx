@@ -49,9 +49,9 @@ export default class ProjectList extends Component {
   render() {
     const currentProj = ()=>{
       switch (this.state.selectedProject){
-        case 'Follower':
+        case '1. Follower':
           return (<Follower/>);
-        case 'Forces':
+        case '2. Bubbles':
           return (<AttractedBubbles/>);
         default:
           return (<div></div>);
