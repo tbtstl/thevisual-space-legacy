@@ -11,6 +11,7 @@ export default class ProjectList extends Component {
       bg: props.bg,
       onSelected: props.onSelected,
       currentColor: props.currentColor,
+      description: props.description,
       mouseInside: false
     };
 
@@ -32,13 +33,13 @@ export default class ProjectList extends Component {
   }
 
   render() {
-    let nameClass = 'f3 hover-' + this.state.currentColor + ' ' + this.state.color;
+    let nameClass = 'f3 hover-' + this.state.color + ' ' + this.state.currentColor;
     let dateClass = 'pl4 ' + this.state.color;
 
     return (
       <div className="ma1">
         <div onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseExit}><a href="#" onClick={this.clicked} className={nameClass}>{this.state.name}</a>
-          {this.state.mouseInside ? (" It's a ball that follows your mouse ¯\\_(ツ)_/¯") : null}
+          {this.state.mouseInside ? this.state.description : null}
         </div>
         <div className={dateClass}>{this.state.date}</div>
       </div>
