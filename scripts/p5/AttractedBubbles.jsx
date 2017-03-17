@@ -5,7 +5,7 @@ import Mover from './utils/Mover.js';
 import Vector from './utils/vector.js';
 import Attractor from './utils/Attractor.js';
 
-export default class Forces extends Component {
+export default class AttractedBubbles extends Component {
   componentDidMount() {
     new p5(this.sketch);
   }

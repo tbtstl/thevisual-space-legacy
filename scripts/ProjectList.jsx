@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Follower from './p5/Follower.jsx';
-import Forces from './p5/Forces.jsx';
+import AttractedBubbles from './p5/AttractedBubbles.jsx';
 import ProjectItem from './ProjectItem.jsx';
 
 export default class ProjectList extends Component {
@@ -52,7 +52,7 @@ export default class ProjectList extends Component {
         case 'Follower':
           return (<Follower/>);
         case 'Forces':
-          return (<Forces/>);
+          return (<AttractedBubbles/>);
         default:
           return (<div></div>);
       }
@@ -62,8 +62,8 @@ export default class ProjectList extends Component {
       if(!this.state.selectedProject.length){
         return (
           <div>
-            <ProjectItem name="Follower" date="Mar2017" currentColor={this.state.bodyColor} color="purple" bg="bg-light-green" onSelected={this.projectSelected} description=" It's a ball that follows your mouse ¯\\_(ツ)_/¯"/>
-            <ProjectItem name="Forces" date="Mar2017" currentColor={this.state.bodyColor} color="light-yellow" bg="bg-purple" onSelected={this.projectSelected} description=" idk"/>
+            <ProjectItem name="1. Follower" date="Mar2017" currentColor={this.state.bodyColor} color="purple" bg="bg-light-green" onSelected={this.projectSelected} description=" (move around)"/>
+            <ProjectItem name="2. Bubbles" date="Mar2017" currentColor={this.state.bodyColor} color="dark-blue" bg="bg-washed-red" onSelected={this.projectSelected} description=" (click)"/>
           </div>
         )
       } else {
