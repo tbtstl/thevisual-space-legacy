@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import p5 from "p5";
 
-import Ball from './utils/Ball.js';
+import Mover from './utils/Mover.js';
 import Vector from './utils/vector.js';
 
 export default class Follower extends Component {
@@ -26,7 +26,7 @@ export default class Follower extends Component {
     let velocity = new Vector(0, 0);
     let acceleration = new Vector(0, 0);
 
-    const ballUpdate = () => {
+    const moverUpdate = () => {
       let mouse = new Vector(p.mouseX, p.mouseY);
       mouse = mouse.subtract(location);
       mouse = mouse.setMag(0.1);
@@ -45,7 +45,7 @@ export default class Follower extends Component {
       }
     };
 
-    const ballDisplay = () => {
+    const moverDisplay = () => {
       p.stroke(stroke);
       p.fill(color);
       p.ellipse(location.x, location.y, 48, 48);
@@ -59,7 +59,7 @@ export default class Follower extends Component {
       canvas.parent(containerId);
     }, true);
 
-    const initialBall = {
+    const initialMover = {
       location: location,
       velocity: velocity,
       acceleration: acceleration,
@@ -67,11 +67,11 @@ export default class Follower extends Component {
       height: height,
       color: color,
       stroke: stroke,
-      update: ballUpdate,
-      display: ballDisplay
+      update: moverUpdate,
+      display: moverDisplay
     };
 
-    let b;
+    let m;
 
     p.setup = () => {
       let canvas = p.createCanvas(width, height);
@@ -79,13 +79,13 @@ export default class Follower extends Component {
       p.smooth();
       canvas.parent(containerId);
 
-      b = new Ball(initialBall, p);
+      m = new Mover(initialMover, p);
     };
 
     p.draw = ()=> {
       p.background(255, 0);
-      b.update(p);
-      b.display();
+      m.update(p);
+      m.display();
     }
   }
 

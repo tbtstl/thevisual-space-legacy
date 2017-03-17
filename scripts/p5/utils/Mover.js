@@ -1,6 +1,6 @@
 import Vector from './vector.js';
 
-export default class Ball {
+export default class Mover {
   constructor(customAttrs, p){
     const defaultAttrs = {
       location: new Vector(0,0),
